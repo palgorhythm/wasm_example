@@ -8,7 +8,9 @@
   },
   "author": "jacob richards",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "path": "^0.12.7"
+  },
   "dependencies": {
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",

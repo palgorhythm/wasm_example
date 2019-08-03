@@ -1,5 +1,3 @@
-// #![feature(wasm_custom_section, wasm_import_module)] //* add rust features
-
 extern crate wasm_bindgen; //* add the wasm_bindgen lib
 use wasm_bindgen::prelude::*; //* import everything in prelude from wasm_bindgen
 
