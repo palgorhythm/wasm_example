@@ -1,0 +1,17 @@
+{
+  "name": "wasm_example",
+  "version": "1.0.0",
+  "description": "wasm example!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server"
+  },
+  "author": "jacob richards",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
