@@ -4,7 +4,7 @@
   "description": "wasm example!",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server --open"
   },
   "author": "jacob richards",
   "license": "MIT",

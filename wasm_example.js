@@ -75,34 +75,6 @@ export function run_alert(item) {
     wasm.run_alert(passStringToWasm(item), WASM_VECTOR_LEN);
 }
 
-/**
-*/
-export function create_stuff() {
-    wasm.create_stuff();
-}
-
-const heap = new Array(32);
-
-heap.fill(undefined);
-
-heap.push(undefined, null, true, false);
-
-function getObject(idx) { return heap[idx]; }
-
-let heap_next = heap.length;
-
-function dropObject(idx) {
-    if (idx < 36) return;
-    heap[idx] = heap_next;
-    heap_next = idx;
-}
-
-function takeObject(idx) {
-    const ret = getObject(idx);
-    dropObject(idx);
-    return ret;
-}
-
 const lTextDecoder = typeof TextDecoder === 'undefined' ? require('util').TextDecoder : TextDecoder;
 
 let cachedTextDecoder = new lTextDecoder('utf-8');
@@ -111,44 +83,8 @@ function getStringFromWasm(ptr, len) {
     return cachedTextDecoder.decode(getUint8Memory().subarray(ptr, ptr + len));
 }
 
-function addHeapObject(obj) {
-    if (heap_next === heap.length) heap.push(heap.length + 1);
-    const idx = heap_next;
-    heap_next = heap[idx];
-
-    heap[idx] = obj;
-    return idx;
-}
-
-export const __wbindgen_object_drop_ref = function(arg0) {
-    takeObject(arg0);
-};
-
 export const __wbg_alert_803605125705802b = function(arg0, arg1) {
     alert(getStringFromWasm(arg0, arg1));
-};
-
-export const __wbg_static_accessor_document_3394a51789a9e18a = function() {
-    const ret = document;
-    return addHeapObject(ret);
-};
-
-export const __wbg_createElement_5095749bf240efbe = function(arg0, arg1, arg2) {
-    const ret = getObject(arg0).createElement(getStringFromWasm(arg1, arg2));
-    return addHeapObject(ret);
-};
-
-export const __wbg_body_3a70928d2aa6aced = function(arg0) {
-    const ret = getObject(arg0).body;
-    return addHeapObject(ret);
-};
-
-export const __wbg_appendChild_e03dbb0599a7bf35 = function(arg0, arg1) {
-    getObject(arg0).appendChild(takeObject(arg1));
-};
-
-export const __wbg_setinner_4d4e786649da4d6b = function(arg0, arg1, arg2) {
-    getObject(arg0).innerHTML = getStringFromWasm(arg1, arg2);
 };
 
 export const __wbindgen_throw = function(arg0, arg1) {
